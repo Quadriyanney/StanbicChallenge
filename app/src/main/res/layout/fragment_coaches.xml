@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CoachesFragment">
+    tools:context=".fragments.CoachesFragment">
 
     <TextView
         android:id="@+id/welcome"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/select_coach"
         android:layout_gravity="center"
-        android:gravity="center"
         android:layout_margin="24dp"
-        style="@style/TextAppearance.AppCompat.Medium"/>
+        android:gravity="center"
+        android:text="@string/select_coach" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_coaches"
+        android:id="@+id/rvCoaches"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"/>
-
+        android:layout_gravity="center" />
 </LinearLayout>

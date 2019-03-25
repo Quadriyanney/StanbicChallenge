@@ -1,11 +1,12 @@
-package com.quadriyanney.stanbicchallenge
+package com.quadriyanney.stanbicchallenge.activities
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.quadriyanney.stanbicchallenge.R
+import com.quadriyanney.stanbicchallenge.commons.Constants
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -18,26 +19,29 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE)
 
-        var stage = sharedPreferences.getInt("stage", 0)
+        var stage = sharedPreferences.getInt(Constants.PREFERENCE_STAGE, 0)
 
         if (stage == 0) {
             stage++
-            sharedPreferences.edit().putInt("stage", 1).apply()
+            sharedPreferences.edit().putInt(Constants.PREFERENCE_STAGE, stage).apply()
         }
 
-        btnServerLogin.setOnClickListener {
-            if (etEmail.text.toString().isEmpty()) {
-                Toast.makeText(this, "Username cannot be blank", Toast.LENGTH_SHORT).show()
+        btnLogin.setOnClickListener {
+            if (etUsername.text.toString().isEmpty()) {
+                etUsername.error = getString(R.string.error_blank_text_field)
                 return@setOnClickListener
             }
+
             if (etPassword.text.toString().isEmpty()) {
-                Toast.makeText(this, "Enter a password", Toast.LENGTH_SHORT).show()
+                etPassword.error = getString(R.string.error_blank_text_field)
                 return@setOnClickListener
             }
+
             startActivity(Intent(this, MainActivity::class.java).apply {
-                putExtra("stage", stage)
-                putExtra("username", etEmail.text.toString())
+                putExtra(Constants.EXTRA_STAGE, stage)
+                putExtra(Constants.EXTRA_USERNAME, etUsername.text.toString())
             })
+
             finish()
         }
     }

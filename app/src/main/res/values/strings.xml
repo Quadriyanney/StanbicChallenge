@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Stanbic X</string>
     <string name="select_coach">select a coach to guide you through the challenge</string>
+    <string name="error_blank_text_field">Field cannot be blank</string>
+    <string name="ok">OK</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
 </resources>
